@@ -1,0 +1,39 @@
+open terminal in directory and run:
+
+docker run \
+ --name influxdb2 \
+ --publish 8086:8086 \
+ --env DOCKER_INFLUXDB_INIT_MODE=setup \
+ --env DOCKER_INFLUXDB_INIT_USERNAME=admin \
+ --env DOCKER_INFLUXDB_INIT_PASSWORD=admin123 \
+ --env DOCKER_INFLUXDB_INIT_ORG=org \
+ --env DOCKER_INFLUXDB_INIT_BUCKET=BUCKET_EXAMPLE \
+ influxdb:2
+ 
+
+open localhost:8086 in web browser
+
+username: admin
+password: admin123
+
+click arrow button on side menu, then on "API tokens", then generate a new API token and copy it to ./example_go/.env file assigning it to "INFLUXDB_TOKEN" key
+
+open terminal on example_go directory and run "go run ."
+
+example output after running command:
+
+SIMPLE QUERY EXAMPLE
+------------------------------------------------------------
+_field:number,_measurement:measurement1,_start:2024-10-03 14:54:53.697761829 +0000 UTC,_stop:2024-10-03 14:55:00.697761829 +0000 UTC,_time:2024-10-03 14:54:55.53251221 +0000 UTC,_value:0,result:_result,switch_state:on,table:0
+_field:number,_measurement:measurement1,_start:2024-10-03 14:54:53.697761829 +0000 UTC,_stop:2024-10-03 14:55:00.697761829 +0000 UTC,_time:2024-10-03 14:54:56.652769886 +0000 UTC,_value:1,result:_result,switch_state:on,table:0
+_field:number,_measurement:measurement1,_start:2024-10-03 14:54:53.697761829 +0000 UTC,_stop:2024-10-03 14:55:00.697761829 +0000 UTC,_time:2024-10-03 14:54:57.664800973 +0000 UTC,_value:2,result:_result,switch_state:on,table:0
+_field:number,_measurement:measurement1,_start:2024-10-03 14:54:53.697761829 +0000 UTC,_stop:2024-10-03 14:55:00.697761829 +0000 UTC,_time:2024-10-03 14:54:58.671397816 +0000 UTC,_value:3,result:_result,switch_state:on,table:0
+_field:number,_measurement:measurement1,_start:2024-10-03 14:54:53.697761829 +0000 UTC,_stop:2024-10-03 14:55:00.697761829 +0000 UTC,_time:2024-10-03 14:54:59.683283927 +0000 UTC,_value:4,result:_result,switch_state:on,table:0
+AGGREGATE QUERY EXAMPLE
+------------------------------------------------------------
+_field:number,_measurement:measurement1,_start:2024-10-03 14:45:00.713000821 +0000 UTC,_stop:2024-10-03 14:55:00.713000821 +0000 UTC,_value:2,result:_result,switch_state:on,table:0
+
+
+ 
+
+
