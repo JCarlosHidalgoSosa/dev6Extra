@@ -21,14 +21,14 @@ func main() {
   	}
 	
   	token := os.Getenv("INFLUXDB_TOKEN")
-  	url := "http://localhost:8086"
+  	url := "http://influxdb:8086"
   	client := influxdb2.NewClient(url, token)
   	org := "org"
 
 	// WRITE DATA
 	bucket := "BUCKET_EXAMPLE"
 	writeAPI := client.WriteAPIBlocking(org, bucket)
-	for value := 0; value < 5; value++ {
+	for value := 0; value < 2; value++ {
 		tags := map[string]string{
 			"switch_state": "on",
 		}

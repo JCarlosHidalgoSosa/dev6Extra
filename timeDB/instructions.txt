@@ -1,26 +1,24 @@
 open terminal in directory and run:
 
-docker run \
- --name influxdb2 \
- --publish 8086:8086 \
- --env DOCKER_INFLUXDB_INIT_MODE=setup \
- --env DOCKER_INFLUXDB_INIT_USERNAME=admin \
- --env DOCKER_INFLUXDB_INIT_PASSWORD=admin123 \
- --env DOCKER_INFLUXDB_INIT_ORG=org \
- --env DOCKER_INFLUXDB_INIT_BUCKET=BUCKET_EXAMPLE \
- influxdb:2
- 
+docker compose up
 
 open localhost:8086 in web browser
 
 username: admin
 password: admin123
 
-click arrow button on side menu, then on "API tokens", then generate a new API token and copy it to ./example_go/.env file assigning it to "INFLUXDB_TOKEN" key
+open another terminal in same directory and run:
 
-open terminal on example_go directory and run "go run ."
+docker ps -a
 
-example output after running command:
+locate a container named "timedb-golang" and copy its CONTAINER ID
+
+run in terminal:
+
+docker start -a <CONTAINER ID>
+
+after wait 2 seconds, terminal should display some data like:
+
 
 SIMPLE QUERY EXAMPLE
 ------------------------------------------------------------
